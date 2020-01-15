@@ -1,7 +1,7 @@
 # DUT Info2 - FilmProvider
 
-### NOM : DOE
-### Prénom : John
+### NOM : Bocquillon
+### Prénom : Louis
 ### Groupe de TP : 
 - [x] 1
 
