@@ -1,2 +1,25 @@
 <!ELEMENT librairie (entete, livre+)>
-<!ELEMENT entete (#PCDATA|strong|em|img)>
+<!ELEMENT entete (#PCDATA, (strong|em|img)*)>
+<!ELEMENT livre (titre, auteur+, description, prix)>
+
+<!-- TODO format isbn -->
+<!ATTLIST livre isbn ID #REQUIRED>
+
+<!ELEMENT strong (#PCDATA)>
+<!ELEMENT em (#PCDATA)>
+<!ELEMENT img (#PCDATA)>
+
+<!ELEMENT titre (#PCDATA)>
+<!ELEMENT auteur (%personne;+ | (direction, membres))>
+<!ELEMENT description (#PCDATA)>
+<!ELEMENT prix (#PCDATA)>
+
+<!ELEMENT nom (#PCDATA)>
+<!ELEMENT prenom (#PCDATA)>
+<!ELEMENT direction (%personne;)>
+
+<!ATTLIST img src   CDATA #REQUIRED
+              title CDATA #IMPLIED>
+
+<!ENTITY % personne SYSTEM (nom, prenom?)>
+
