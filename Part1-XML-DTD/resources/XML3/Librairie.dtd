@@ -1,0 +1,2 @@
+<!ELEMENT librairie (entete, livre+)>
+<!ELEMENT entete (#PCDATA|strong|em|img)>
