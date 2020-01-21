@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- Déclaration de la DTD -->
+<!DOCTYPE films SYSTEM "FilmProvider.dtd">
 <films>
     <realisateur id_realisateur="real_01">
         <prenom>Martin</prenom>
