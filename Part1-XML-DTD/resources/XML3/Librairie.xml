@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Déclaration de la DTD -->
+<!DOCTYPE librairie SYSTEM "Librairie.dtd">
+
+<librairie>
+    <entete>
+        <strong>En-tête de la librairie</strong>
+        <texte>Texte présenatant la librairie.</texte>
+        <em>On peut aussi utiliser la balise em ...</em>
+        <img src="chemin" title="Image">... Et la balise img !</img>
+        &copyright;
+    </entete>
+
+    <livre isbn="123456789">
+        <titre>Titre du livre 1</titre>
+        <auteurs>
+            <auteur>
+                <nom>Auteur 1</nom>
+            </auteur>
+            <auteur>
+                <nom>Auteur 2</nom>
+                <prenom>Auteur 2</prenom>
+            </auteur>
+            <auteur>
+                <!-- Erreur -->
+                <prenom>Auteur 3</prenom>
+            </auteur>
+            <!-- Erreur -->
+            <collectif>
+                <direction></direction>
+                <membres></membres>
+            </collectif>
+        </auteurs>
+        <description></description>
+        <prix prix="euro"></prix>
+    </livre>
+
+    <livre isbn="">
+        <titre></titre>
+        <auteurs>
+            <collectif>
+                <direction>
+                    <nom></nom>
+                </direction>
+                <membres></membres>
+            </collectif>
+        </auteurs>
+        <description></description>
+        <prix prix=""/>
+    </livre>
+</librairie>
