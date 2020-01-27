@@ -27,25 +27,25 @@
             </auteur>
             <!-- Erreur -->
             <collectif>
-                <direction></direction>
+                <auteur></auteur>
                 <membres></membres>
             </collectif>
         </auteurs>
         <description></description>
-        <prix prix="euro"></prix>
+        <prix prix="10"/>
     </livre>
 
-    <livre isbn="">
+    <livre isbn="1234">
         <titre></titre>
         <auteurs>
             <collectif>
-                <direction>
+                <auteur>
                     <nom></nom>
-                </direction>
+                </auteur>
                 <membres></membres>
             </collectif>
         </auteurs>
         <description></description>
-        <prix prix=""/>
+        <prix prix="15"/>
     </livre>
 </librairie>
