@@ -3,7 +3,7 @@
 
 <!ELEMENT librairie (entete, livre+)>
         <!--%texteBalises;+, %copyright;?-->
-<!ELEMENT entete (%texteBalises;+, %copyright;?)>
+<!ELEMENT entete %texteBalises;>
 <!ELEMENT livre (titre, auteurs+, description, prix)>
 
 <!ATTLIST livre isbn NMTOKEN #REQUIRED>
@@ -13,10 +13,10 @@
 <!ELEMENT description (%texteBalises;)>
 <!ELEMENT prix EMPTY>
 
-<!ATTLIST prix prix   NMTOKEN                         #REQUIRED
-               devise (euro | livre | dollar) "euro"  #REQUIRED
-               type   ("HT", TTC)                     #REQUIRED
-               tva    NMTOKEN #FIXED "5.5">
+<!ATTLIST prix prix NMTOKEN #REQUIRED
+               devise (euro | livre | dollar) "euro"
+               type (HT | TTC)  "HT"
+               tva NMTOKEN #FIXED "5.5">
 
 <!ELEMENT texte (#PCDATA)>
 

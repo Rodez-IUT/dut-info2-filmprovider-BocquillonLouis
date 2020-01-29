@@ -7,45 +7,24 @@
         <strong>En-tête de la librairie</strong>
         <texte>Texte présenatant la librairie.</texte>
         <em>On peut aussi utiliser la balise em ...</em>
-        <img src="chemin" title="Image">... Et la balise img !</img>
-        &copyright;
+        <img src="chemin" title="Image"/>
     </entete>
-
-    <livre isbn="123456789">
-        <titre>Titre du livre 1</titre>
-        <auteurs>
-            <auteur>
-                <nom>Auteur 1</nom>
-            </auteur>
-            <auteur>
-                <nom>Auteur 2</nom>
-                <prenom>Auteur 2</prenom>
-            </auteur>
-            <auteur>
-                <!-- Erreur -->
-                <prenom>Auteur 3</prenom>
-            </auteur>
-            <!-- Erreur -->
-            <collectif>
-                <auteur></auteur>
-                <membres></membres>
-            </collectif>
-        </auteurs>
-        <description></description>
-        <prix prix="10"/>
-    </livre>
 
     <livre isbn="1234">
         <titre></titre>
         <auteurs>
-            <collectif>
-                <auteur>
-                    <nom></nom>
-                </auteur>
-                <membres></membres>
-            </collectif>
+            <auteur>
+                <nom>Nom</nom>
+                <prenom>Prenom</prenom>
+            </auteur>
+            <auteur>
+                <nom>Nom</nom>
+            </auteur>
         </auteurs>
-        <description></description>
-        <prix prix="15"/>
+        <description>
+            <texte>Blablabla</texte>
+            <em>Bite</em>
+        </description>
+        <prix prix="10" devise="euro" tva="5.5" type="HT"/>
     </livre>
 </librairie>
