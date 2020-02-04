@@ -25,8 +25,8 @@
 					<xsl:for-each select="film">
 					<!-- Pour chaque film : 1 ligne avec titre + résumé -->
 					<tr>
-						<td><xsl:value-of select="/titre"/></td>
-						<td><xsl:value-of select="/resume/text"/></td>
+						<td><xsl:value-of select="titre"/></td>
+						<td><xsl:value-of select="resume/text"/></td>
 					</tr>
 					</xsl:for-each>
 				</tbody>
