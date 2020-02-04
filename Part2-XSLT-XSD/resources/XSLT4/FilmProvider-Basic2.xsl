@@ -16,7 +16,7 @@
 				<!-- Colonne titre du tableau -->
 				<thead>
 				<tr>
-					<th>Titre</th><th>Resume</th>
+					<th>Titre</th><th>Resume</th><th>Nom/Prénom du réalisateur</th>
 				</tr>
 				</thead>
 				<!-- Corps du tableau -->
@@ -27,6 +27,7 @@
 					<tr>
 						<td><xsl:value-of select="titre"/></td>
 						<td><xsl:value-of select="resume/text"/></td>
+						<td><xsl:value-of select="/films/realisateur/nom"/></td>
 					</tr>
 					</xsl:for-each>
 				</tbody>

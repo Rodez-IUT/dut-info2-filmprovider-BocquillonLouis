@@ -21,19 +21,20 @@
 				</thead>
 				<!-- Corps du tableau -->
 				<tbody>
-					<!-- Boucle sur les films -->
-					<xsl:for-each select="film">
-					<!-- Pour chaque film : 1 ligne avec titre + résumé -->
-					<tr>
-						<td><xsl:value-of select="titre"/></td>
-						<td><xsl:value-of select="resume/text"/></td>
-					</tr>
-					</xsl:for-each>
+					<xsl:apply-templates select="film" />
 				</tbody>
 				
 			</table>
 		</body>
 	</html>
+</xsl:template>
+
+<xsl:template match="/films/film">
+		<!-- Pour chaque film : 1 ligne avec titre + résumé -->
+		<tr>
+			<td><xsl:value-of select="titre"/></td>
+			<td><xsl:value-of select="resume/text"/></td>
+		</tr>
 </xsl:template>
 
 </xsl:stylesheet>
