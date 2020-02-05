@@ -32,6 +32,7 @@
 
 	<xsl:template match="/films/film">
 
+		<!-- ID du réalisateur -->
 		<xsl:variable name="idReal" select="@id_realisateur"/>
 		<!-- Pour chaque film : 1 ligne avec titre + résumé -->
 		<tr>
