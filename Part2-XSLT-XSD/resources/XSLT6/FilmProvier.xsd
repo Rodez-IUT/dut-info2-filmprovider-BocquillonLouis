@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+    <xs:element name="realisateur" type="realType"/>
+    <xs:element name="film" type="filmType"/>
+    <xs:element name="resume" type="resumeType"/>
+
+    <!-- Attribut id_realisteur -->
+    <xs:simpleType name="idReal">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="real_[0-9]+"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <!-- Attribut id_film -->
+    <xs:simpleType name="idFilm">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="film_[0-9]+"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <!-- Élément réalisateur -->
+    <xs:complexType name="realType">
+
+        <xs:sequence>
+            <xs:element name="prenom" type="xs:string" maxOccurs="1"/>
+            <xs:element name="nom" type="xs:string" maxOccurs="1"/>
+        </xs:sequence>
+        <xs:attribute name="id_realisateur" type="idReal" use="required"/>
+    </xs:complexType>
+
+    <!-- Élément film -->
+    <xs:complexType name="filmType">
+        <xs:sequence>
+            <xs:element name="titre" type="xs:string" maxOccurs="1"/>
+            <xs:element ref="resume" maxOccurs="1"/>
+        </xs:sequence>
+
+        <xs:attribute name="id_film" type="idFilm" use="required"/>
+        <xs:attribute name="id_realisateur" type="idReal" use="required"/>
+        <xs:attribute name="annee" type="xs:gYear" use="required"/>
+    </xs:complexType>
+
+    <!-- Élément resume -->
+    <xs:complexType name="resumeType">
+        <xs:sequence>
+            <!-- Élément image -->
+            <xs:element name="image" maxOccurs="1">
+                <xs:complexType>
+                    <xs:attribute name="source" type="xs:string" use="required"/>
+                </xs:complexType>
+            </xs:element>
+            <!-- Élément texte du résumé -->
+            <xs:element name="texte" type="xs:string" maxOccurs="1"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:schema>
