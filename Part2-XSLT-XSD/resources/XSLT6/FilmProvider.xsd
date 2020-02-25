@@ -1,66 +1,84 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://formationxml/filmprovider">
+<?xml version="1.0" encoding="UTF-8" ?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           targetNamespace="http://formationxml/filmprovider"
+           xmlns:fx="http://formationxml/filmprovider"
+           elementFormDefault="qualified">
 
-    <xs:element name="films" type="filmsType"/>
-    <xs:element name="realisateur" type="realType"/>
-    <xs:element name="film" type="filmType"/>
-    <xs:element name="resume" type="resumeType"/>
+    <!-- Films description part -->
+    <xs:element name="films">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="realisateur" maxOccurs="unbounded" />
+                <xs:element ref="film" maxOccurs="unbounded" />
+            </xs:sequence>
+        </xs:complexType>
+        <xs:key name="pkReal">
+            <xs:selector xpath="realisateur" />
+            <xs:field xpath="@id_realisateur" />
+        </xs:key>
+        <xs:keyref refer="pkReal" name="fkReal">
+            <xs:selector xpath="film" />
+            <xs:field xpath="@id_realisateur" />
+        </xs:keyref>
+    </xs:element>
 
-    <!-- element films (racine) -->
-    <xs:complexType name="filmsType">
-        <xs:sequence>
-            <xs:element ref="realisateur" maxOccurs="unbounded"/>
-            <xs:element ref="film" maxOccurs="unbounded"/>
-        </xs:sequence>
-    </xs:complexType>
+    <!-- Author description part -->
+    <xs:element name="realisateur">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="prenom" type="xs:string" />
+                <xs:element name="nom" type="xs:string" />
+            </xs:sequence>
+            <xs:attribute name="id_realisateur" type="id_real_type" use="required"></xs:attribute>
+        </xs:complexType>
+    </xs:element>
 
-    <!-- Attribut id_realisteur -->
-    <xs:simpleType name="idReal">
+    <xs:simpleType name="id_real_type">
         <xs:restriction base="xs:string">
-            <xs:pattern value="real_[0-9]+"/>
+            <xs:pattern value="real_[0-9]+" />
         </xs:restriction>
     </xs:simpleType>
 
-    <!-- Attribut id_film -->
-    <xs:simpleType name="idFilm">
-        <xs:restriction base="xs:string">
-            <xs:pattern value="film_[0-9]+"/>
+    <!-- Movie description part -->
+    <xs:element name="film">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="titre" type="xs:string" />
+                <xs:element ref="resume" />
+            </xs:sequence>
+            <xs:attribute name="id_film" type="id_film_type" use="required"></xs:attribute>
+            <xs:attribute name="id_realisateur" type="id_real_type" use="required"></xs:attribute>
+            <xs:attribute name="annee" type="annee_type" use="required"></xs:attribute>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:simpleType name="annee_type">
+        <xs:restriction base="xs:integer">
+            <xs:minInclusive value="1920" />
+            <xs:maxInclusive value="2006" />
         </xs:restriction>
     </xs:simpleType>
 
-    <!-- Élément réalisateur -->
-    <xs:complexType name="realType">
+    <xs:simpleType name="id_film_type">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="film_[0-9]+" />
+        </xs:restriction>
+    </xs:simpleType>
 
-        <xs:sequence>
-            <xs:element name="prenom" type="xs:string"/>
-            <xs:element name="nom" type="xs:string"/>
-        </xs:sequence>
-        <xs:attribute name="id_realisateur" type="idReal" use="required"/>
-    </xs:complexType>
+    <!-- Resume description part -->
+    <xs:element name="resume">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="image" minOccurs="0" />
+                <xs:element name="text" type="xs:string" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
 
-    <!-- Élément film -->
-    <xs:complexType name="filmType">
-        <xs:sequence>
-            <xs:element name="titre" type="xs:string"/>
-            <xs:element ref="resume"/>
-        </xs:sequence>
-
-        <xs:attribute name="id_film" type="idFilm" use="required"/>
-        <xs:attribute name="id_realisateur" type="idReal" use="required"/>
-        <xs:attribute name="annee" type="xs:gYear" use="required"/>
-    </xs:complexType>
-
-    <!-- Élément resume -->
-    <xs:complexType name="resumeType">
-        <xs:sequence>
-            <!-- Élément image -->
-            <xs:element name="image" minOccurs="0">
-                <xs:complexType>
-                    <xs:attribute name="source" type="xs:anyURI" use="required"/>
-                </xs:complexType>
-            </xs:element>
-            <!-- Élément texte du résumé -->
-            <xs:element name="text" type="xs:string" />
-        </xs:sequence>
-    </xs:complexType>
+    <!-- Image description part -->
+    <xs:element name="image">
+        <xs:complexType>
+            <xs:attribute name="source" type="xs:string" use="required"></xs:attribute>
+        </xs:complexType>
+    </xs:element>
 </xs:schema>
